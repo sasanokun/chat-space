@@ -14,6 +14,43 @@ Things you may want to cover:
 * Database creation
 
 * Database initialization
+user table
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+  Association
+- has_many :user_groups
+- has_many :chats
+
+group table
+|Column|Type|Options|
+|------|----|-------|
+|groupname|string|null: false|
+  Association
+- has_many :user_groups
+- has_many :chats
+
+user_group table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+  Association
+- belongs_to :group
+- belongs_to :user
+
+chat table
+|Column|Type|Options|
+|------|----|-------|
+|chat|text||
+|image|text||
+|user_id|integer|null: false,foreign_key: true|
+|group_id|integer|null: false,foreign_key: true|
+  Association
+- belongs_to :group
+- belongs_to :user
 
 * How to run the test suite
 
